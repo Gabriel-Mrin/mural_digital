@@ -67,16 +67,11 @@ body {
     border-radius: 8px;
     text-decoration: none;
     color: black;
-    box-shadow: 0 0 10px #ccc;
     transition: 0.3s;
     max-width: 95%;
     margin-top: 10px;
 }
 
-
-.card:hover {
-    transform: scale(1.03);
-}
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
@@ -208,7 +203,6 @@ button:hover {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     margin: 0 10px 20px 0;
 }
 .img-anuncio {
