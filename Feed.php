@@ -70,25 +70,29 @@ $result = $conn->query($sql);
 
             ?>
 
-            <div class="post">
+           <a href="noticia.php?id=<?php echo $row['id']; ?>" class="link-post">
 
-                <img
-                src="img/<?php echo $row['imagem']; ?>"
-                alt="Imagem do anúncio">
+                <div class="post">
 
-                <h3>
-                    <?php echo $row['titulo']; ?>
-                </h3>
+                    <img
+                    src="img/<?php echo $row['imagem']; ?>"
+                    alt="Imagem do anúncio">
 
-                <p>
-                    <?php echo $row['descricao']; ?>
-                </p>
+                    <h3>
+                        <?php echo $row['titulo']; ?>
+                    </h3>
 
-                <span>
-                    <?php echo date('d/m/Y', strtotime($row['data'])); ?>
-                </span>
+                    <p>
+                        <?php echo substr($row['descricao'], 0, 100); ?>...
+                    </p>
 
-            </div>
+                    <span>
+                        <?php echo date('d/m/Y', strtotime($row['data'])); ?>
+                    </span>
+
+                </div>
+
+            </a>
 
         <?php } ?>
 
