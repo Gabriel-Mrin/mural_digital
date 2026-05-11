@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural Digital - Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(255,255,255,0.7);
+        }
+
+        button {
+            display: block;
+            margin: 15px auto 0;
+            padding: 10px 20px;
+            background: white;
+            color: #1d3ea1;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+        }
+
+        /*Ajuste fino pro celular*/
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo">Mural Digital</div>
+        <div class="subtitle">Login</div>
+
+        <form action="login.php" method="POST">
+
+            <input type="email" name="email" placeholder="E-mail" required>
+
+            <input type="password" name="senha" placeholder="Senha" required>
+
+            <button type="submit">Entrar</button>
+
+</form>
+    </div>
+
+</body>
+</html>
