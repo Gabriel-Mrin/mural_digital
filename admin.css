@@ -9,7 +9,6 @@ body {
     min-height: 100vh;
 }
 
-/* MENU LATERAL */
 .sidebar {
     width: 200px;
     background: #141e30;
@@ -36,7 +35,6 @@ body {
     background: #243b55;
 }
 
-/* CONTEÚDO */
 .content {
     flex: 1;
     padding: 15px;
@@ -47,12 +45,10 @@ body {
     margin-bottom: 0px;
 }
 
-/* 🔥 CORREÇÃO DO ESPAÇO */
 .content p {
     margin: 5px 0;
 }
 
-/* CARDS */
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +69,6 @@ body {
 }
 
 
-/* RESPONSIVO */
 @media (max-width: 768px) {
     .sidebar {
         width: 180px;
@@ -98,7 +93,6 @@ body {
     }
 }
 
-/*FORMULÁRIO*/
 .form {
     max-width: 100%;
     margin-top: 0; /*CORRIGIDO*/
@@ -119,7 +113,6 @@ body {
     border: 1px solid #ccc;
 }
 
-/*BOTÕES*/
 .buttons {
     margin-top: 20px;
 }
@@ -146,7 +139,6 @@ button:hover {
     border-radius: 6px;
 }
 
-/*AJUSTE FINAL DO FORM DENTRO DO CARD*/
 .card form {
     max-width: 500px;
     margin: auto;
