@@ -41,7 +41,7 @@ if (!isset($_SESSION['id']) || $_SESSION['tipo'] != 'Administrador') {
             <label>Descrição</label>
             <input type="text" name="descricao" required>
 
-            <!--TROQUEI PRA URL -->
+            <!--Apresentar hj -->
             <label>Imagem</label>
             <input type="hidden" name="MAX_FILE_SIZE" value="10000000000" />
             <p>
