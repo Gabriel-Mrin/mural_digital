@@ -43,32 +43,6 @@ $result = $conn->query($sql);
 
         <?php while($row = $result->fetch_assoc()) { ?>
 
-            <?php
-
-            $idUsuario = $_SESSION['id'];
-            $idAnuncio = $row['id'];
-
-            $verifica = "SELECT * FROM visualizacoes
-            WHERE id_usuario = ? AND id_anuncio = ?";
-
-            $stmt = $conn->prepare($verifica);
-            $stmt->bind_param("ii", $idUsuario, $idAnuncio);
-            $stmt->execute();
-
-            $resultVerifica = $stmt->get_result();
-
-            if($resultVerifica->num_rows == 0){
-
-                $insert = "INSERT INTO visualizacoes
-                (id_usuario, id_anuncio)
-                VALUES (?, ?)";
-
-                $stmtInsert = $conn->prepare($insert);
-                $stmtInsert->bind_param("ii", $idUsuario, $idAnuncio);
-                $stmtInsert->execute();
-            }
-
-            ?>
 
            <a href="noticia.php?id=<?php echo $row['id']; ?>" class="link-post">
 

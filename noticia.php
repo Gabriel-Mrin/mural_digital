@@ -23,6 +23,28 @@ if ($result->num_rows == 0) {
 }
 
 $row = $result->fetch_assoc();
+
+$idUsuario = $_SESSION['id'];
+$idAnuncio = $_GET['id'];
+
+$verifica = "SELECT id FROM visualizacoes
+WHERE id_usuario = ? AND id_anuncio = ?";
+
+$stmt = $conn->prepare($verifica);
+$stmt->bind_param("ii", $idUsuario, $idAnuncio);
+$stmt->execute();
+
+$resultVerifica = $stmt->get_result();
+
+if ($resultVerifica->num_rows == 0) {
+    $insert = "INSERT INTO visualizacoes
+    (id_usuario, id_anuncio)
+    VALUES (?, ?)";
+
+    $stmtInsert = $conn->prepare($insert);
+    $stmtInsert->bind_param("ii", $idUsuario, $idAnuncio);
+    $stmtInsert->execute();
+}
 ?>
 
 <!DOCTYPE html>
