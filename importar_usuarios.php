@@ -2,7 +2,7 @@
 
 include "conexao.php";
 
-$json = file_get_contents("https://randomuser.me/api/?results=10");
+$json = file_get_contents("https://randomuser.me/api/?results=60");
 $dados = json_decode($json, true);
 
 foreach ($dados['results'] as $usuario) {
@@ -11,7 +11,7 @@ foreach ($dados['results'] as $usuario) {
     $email = $usuario['email'];
     $senha = $usuario['login']['password'];
 
-    $tipo = "Administrador";
+    $tipo = "usuario";
 
     $sql = "INSERT INTO usuarios (nome, email, senha, tipo)
             VALUES (?, ?, ?, ?)";
@@ -28,5 +28,5 @@ foreach ($dados['results'] as $usuario) {
     $stmt->execute();
 }
 
-echo "10 usuários importados com sucesso!";
+echo "60 usuários importados com sucesso!";
 ?>
