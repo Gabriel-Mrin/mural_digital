@@ -19,8 +19,10 @@ $inicio = ($pagina - 1) * $limite;
 
 $filtro = $_GET['filtro'] ?? '';
 
+
 $sql = "SELECT * FROM anuncios
-        WHERE titulo LIKE '%$filtro%'
+        WHERE favorito = 1
+        AND titulo LIKE '%$filtro%'
         ORDER BY criado_em DESC
         LIMIT $inicio, $limite";
 
@@ -33,26 +35,23 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mural Digital</title>
+    <title>Notícias Favoritas</title>
     <link rel="stylesheet" href="feed.css">
 </head>
 
 <body>
 
     <header>
-        <h2>
-            Mural Digital
-        </h2>
-
+        <h2>Favoritas</h2>
 
         <div class="menu-links">
-            <a href="favoritas.php"class="estrela-menu">★</a>
+            <a href="feed.php">Feed</a>
             <a href="logout.php">Sair</a>
         </div>
-
     </header>
+
     <form method="GET" class="filtro">
-        <input type="text" name="filtro" placeholder="Pesquisar notícia" value="<?php echo $filtro; ?>">
+        <input type="text" name="filtro" placeholder="Pesquisar favorita" value="<?php echo $filtro; ?>">
         <button type="submit">Pesquisar</button>
     </form>
 
@@ -61,8 +60,6 @@ $result = $conn->query($sql);
         <?php if ($result->num_rows > 0) { ?>
 
             <?php while ($row = $result->fetch_assoc()) { ?>
-
-
 
                 <div class="post">
 
@@ -78,27 +75,26 @@ $result = $conn->query($sql);
                             <?php echo substr($row['descricao'], 0, 100); ?>...
                         </p>
 
-                        <div class="info-post">
-                            <span>
-                                <?php echo date('d/m/Y H:i', strtotime($row['criado_em'])); ?>
-                            </span>
-
-                            <a href="favoritar.php?id=<?php echo $row['id']; ?>" class="favorito">
-                                <?php echo $row['favorito'] ? '★' : '☆'; ?>
-                            </a>
-                        </div>
-
                     </a>
 
-                </div>
+                    <div class="info-post">
+                        <span>
+                            <?php echo date('d/m/Y H:i', strtotime($row['criado_em'])); ?>
+                        </span>
 
+                        <a href="favoritar.php?id=<?php echo $row['id']; ?>" class="favorito">
+                            ★
+                        </a>
+                    </div>
+
+                </div>
 
             <?php } ?>
 
         <?php } else { ?>
 
             <p style="text-align:center;">
-                Nenhum anúncio disponível.
+                Nenhuma notícia favorita.
             </p>
 
         <?php } ?>
@@ -107,21 +103,15 @@ $result = $conn->query($sql);
 
     <div class="paginacao">
         <?php if ($pagina > 1) { ?>
-            <a href="feed.php?pagina=<?php echo $pagina - 1; ?>&filtro=<?php echo $filtro; ?>">
+            <a href="favoritas.php?pagina=<?php echo $pagina - 1; ?>&filtro=<?php echo $filtro; ?>">
                 Anterior
             </a>
         <?php } ?>
 
-        <a href="feed.php?pagina=<?php echo $pagina + 1; ?>&filtro=<?php echo $filtro; ?>">
+        <a href="favoritas.php?pagina=<?php echo $pagina + 1; ?>&filtro=<?php echo $filtro; ?>">
             Próxima
         </a>
     </div>
-
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
 
 </body>
 

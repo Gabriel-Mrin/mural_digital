@@ -20,12 +20,17 @@ header {
 }
 
 header a {
-    position: absolute;
-    right: 20px;
     color: white;
     text-decoration: none;
 }
 
+.menu-links {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
 
 /* FEED */
 .feed {
@@ -137,3 +142,58 @@ header a {
     color: black;
 }
 
+.filtro {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px auto;
+}
+
+.filtro input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.filtro button {
+    padding: 10px 15px;
+    background: #141e30;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.info-post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px 10px;
+}
+
+.info-post span {
+    margin: 0;
+    padding: 0;
+}
+
+.favorito {
+    font-size: 24px;
+    color: #202964;
+    text-decoration: none;
+}
+
+.paginacao {
+    text-align: center;
+    margin: 30px;
+}
+
+.paginacao a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background: #141e30;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
