@@ -55,63 +55,23 @@ if ($resultVerifica->num_rows == 0) {
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <head>
-    <link rel="stylesheet" href="noticia.css">
     <meta charset="UTF-8">
     <title><?php echo $row['titulo']; ?></title>
-
-    <style>
-        body {
-            font-family: Arial;
-            background: #f4f4f4;
-            padding: 30px;
-        }
-
-        .noticia {
-            background: white;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .noticia {
-            background: white;
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .noticia img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-
-        .noticia h1 {
-            color: #141e30;
-            margin-top: 25px;
-            font-size: 34px;
-        }
-
-        .noticia p {
-            line-height: 1.8;
-            color: #444;
-            font-size: 18px;
-        }
-    </style>
-
+    <link rel="stylesheet" href="feed.css?v=3">
 </head>
 
 <body>
+
+    <header>
+        <h2>Mural Digital</h2>
+
+        <div class="menu-links">
+            <a href="favoritas.php">Favoritos</a>
+            <a href="logout.php">Sair</a>
+        </div>
+    </header>
 
     <div class="noticia">
 
@@ -131,9 +91,7 @@ if ($resultVerifica->num_rows == 0) {
 
         <br><br>
 
-        <a href="feed.php" class="btn-voltar">
-            ← Voltar ao Feed
-        </a>
+
 
     </div>
 

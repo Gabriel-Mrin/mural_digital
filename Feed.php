@@ -34,7 +34,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mural Digital</title>
-    <link rel="stylesheet" href="feed.css">
+    <link rel="stylesheet" href="feed.css?v=3">
 </head>
 
 <body>
@@ -46,7 +46,7 @@ $result = $conn->query($sql);
 
 
         <div class="menu-links">
-            <a href="favoritas.php"class="estrela-menu">★</a>
+            <a href="favoritas.php">Favoritos</a>
             <a href="logout.php">Sair</a>
         </div>
 
@@ -62,8 +62,6 @@ $result = $conn->query($sql);
 
             <?php while ($row = $result->fetch_assoc()) { ?>
 
-
-
                 <div class="post">
 
                     <a href="noticia.php?id=<?php echo $row['id']; ?>" class="link-post">
@@ -78,26 +76,25 @@ $result = $conn->query($sql);
                             <?php echo substr($row['descricao'], 0, 100); ?>...
                         </p>
 
-                        <div class="info-post">
-                            <span>
-                                <?php echo date('d/m/Y H:i', strtotime($row['criado_em'])); ?>
-                            </span>
-
-                            <a href="favoritar.php?id=<?php echo $row['id']; ?>" class="favorito">
-                                <?php echo $row['favorito'] ? '★' : '☆'; ?>
-                            </a>
-                        </div>
-
                     </a>
 
-                </div>
+                    <div class="info-post">
+                        <span>
+                            <?php echo date('d/m/Y H:i', strtotime($row['criado_em'])); ?>
+                        </span>
 
+                        <a href="#" class="favorito" data-id="<?php echo $row['id']; ?>">
+                            <?php echo $row['favorito'] ? '★' : '☆'; ?>
+                        </a>
+                    </div>
+
+                </div>
 
             <?php } ?>
 
         <?php } else { ?>
 
-            <p style="text-align:center;">
+            <p class="sem-post">
                 Nenhum anúncio disponível.
             </p>
 
@@ -118,6 +115,30 @@ $result = $conn->query($sql);
     </div>
 
     <script>
+        document.querySelectorAll('.favorito').forEach(botao => {
+            botao.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                const id = this.dataset.id;
+
+                fetch('favoritar.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'id=' + id
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.favorito == 1) {
+                            this.textContent = '★';
+                        } else {
+                            this.textContent = '☆';
+                        }
+                    });
+            });
+        });
+
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }

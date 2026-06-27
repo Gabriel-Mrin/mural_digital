@@ -36,7 +36,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notícias Favoritas</title>
-    <link rel="stylesheet" href="feed.css">
+    <link rel="stylesheet" href="feed.css?v=3">
 </head>
 
 <body>
@@ -82,8 +82,8 @@ $result = $conn->query($sql);
                             <?php echo date('d/m/Y H:i', strtotime($row['criado_em'])); ?>
                         </span>
 
-                        <a href="favoritar.php?id=<?php echo $row['id']; ?>" class="favorito">
-                            ★
+                        <a href="#" class="favorito" data-id="<?php echo $row['id']; ?>">
+                            <?php echo $row['favorito'] ? '★' : '☆'; ?>
                         </a>
                     </div>
 
@@ -93,7 +93,7 @@ $result = $conn->query($sql);
 
         <?php } else { ?>
 
-            <p style="text-align:center;">
+            <p class="sem-post">
                 Nenhuma notícia favorita.
             </p>
 
@@ -112,6 +112,32 @@ $result = $conn->query($sql);
             Próxima
         </a>
     </div>
+
+    <script>
+        document.querySelectorAll('.favorito').forEach(botao => {
+            botao.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                const id = this.dataset.id;
+
+                fetch('favoritar.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'id=' + id
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.favorito == 1) {
+                            this.textContent = '★';
+                        } else {
+                            this.closest('.post').remove();
+                        }
+                    });
+            });
+        });
+    </script>
 
 </body>
 

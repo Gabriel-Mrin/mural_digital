@@ -4,15 +4,16 @@ session_start();
 include "conexao.php";
 
 if (!isset($_SESSION['id'])) {
-    header("Location: TelaLogin.html");
+    echo json_encode(["erro" => "Usuário não logado"]);
     exit;
 }
 
-if (!isset($_GET['id'])) {
-    die("Notícia não encontrada.");
+if (!isset($_POST['id'])) {
+    echo json_encode(["erro" => "ID não enviado"]);
+    exit;
 }
 
-$id = (int) $_GET['id'];
+$id = (int) $_POST['id'];
 
 $sql = "UPDATE anuncios
         SET favorito = IF(favorito = 1, 0, 1)
@@ -20,6 +21,11 @@ $sql = "UPDATE anuncios
 
 $conn->query($sql);
 
-header("Location: feed.php");
-exit;
+$sql = "SELECT favorito FROM anuncios WHERE id = $id";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+echo json_encode([
+    "favorito" => $row['favorito']
+]);
 ?>
