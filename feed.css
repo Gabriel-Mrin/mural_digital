@@ -229,28 +229,28 @@ header a {
 
 }
 
-.noticia {
-    background: white;
-    max-width: 850px;
-    margin: 40px auto;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+.noticia{
+    background: transparent;
+    max-width: 900px;
+    margin: 25px auto 40px auto;
+    padding: 0 25px;
+    border-radius: 0;
+    box-shadow: none;
 }
-
 .noticia h1 {
     color: #141e30;
+    text-align: center;
 }
 
 .noticia p {
     line-height: 1.8;
 }
 
-.noticia img {
+.noticia img{
     width: 100%;
     max-height: 420px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .noticia span {

@@ -59,7 +59,7 @@ if ($resultVerifica->num_rows == 0) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $row['titulo']; ?></title>
-    <link rel="stylesheet" href="feed.css?v=3">
+    <link rel="stylesheet" href="feed.css?v=4">
 </head>
 
 <body>
@@ -68,6 +68,7 @@ if ($resultVerifica->num_rows == 0) {
         <h2>Mural Digital</h2>
 
         <div class="menu-links">
+            <a href="Feed.php">Feed</a>
             <a href="favoritas.php">Favoritos</a>
             <a href="logout.php">Sair</a>
         </div>
@@ -75,18 +76,19 @@ if ($resultVerifica->num_rows == 0) {
 
     <div class="noticia">
 
-        <img src="img/<?php echo $row['imagem']; ?>">
-
         <h1>
             <?php echo $row['titulo']; ?>
         </h1>
+
+        <img src="img/<?php echo $row['imagem']; ?>">
+
 
         <p>
             <?php echo $row['descricao']; ?>
         </p>
 
         <span>
-            <?php echo date('d/m/Y', strtotime($row['data'])); ?>
+            <?php echo date('d/m/Y H:i', strtotime($row['criado_em'])); ?>
         </span>
 
         <br><br>

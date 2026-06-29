@@ -36,7 +36,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notícias Favoritas</title>
-    <link rel="stylesheet" href="feed.css?v=3">
+    <link rel="stylesheet" href="feed.css?v=4">
 </head>
 
 <body>
